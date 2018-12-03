@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.0">
+	<file name="helloWorld.cpp">
+		<error line="1" severity="warning" message="no copyright notice found" source="T013"/>
+		<error line="7" severity="warning" message="closing curly bracket not in the same line or column" source="T011"/>
+	</file>
+</checkstyle>
