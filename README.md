@@ -11,8 +11,6 @@ Test the sonarQube environment :
 
 ## Tools used (with their versions)
 
-Ces logiciels doivent avoir été installés et configurés (versions utilisées entre parenthèses)
-
 - CentOS 7.3
 - gcc (4.8.5)
 - sonarQube (7.4)
@@ -36,25 +34,25 @@ Download the project:
 
 ## Build the binary:
 
-`$ g++ -ansi -pedantic -O0 -g -Wall --coverage HelloWorld.cpp -o HelloWorld
-
-
-```
+`$ g++ -ansi -pedantic -O0 -g -Wall --coverage HelloWorld.cpp -o HelloWorld`
 
 ## Execute the quality tools
 
-` cppcheck -v --enable=all --suppress=missingIncludeSystem . --xml . 2> cppcheck-report.xml
+```
+  cppcheck -v --enable=all --suppress=missingIncludeSystem . --xml . 2> cppcheck-report.xml
   vera++ -showrules -nodup *.cpp |& vera++Report2checkstyleReport.perl > vera++-report.xml HelloWorld.cpp
   rats --xml  -w 3 *.cpp > rats-report.xml HelloWorld.cpp
   gcovr -r . --html -o HelloWorld.html
   gcovr -r . --xml -o gcovr-report.xml
-  valgrind --xml=yes --xml-file=valgrind-report.xml ./HelloWorld `
+  valgrind --xml=yes --xml-file=valgrind-report.xml ./HelloWorld
+```
 
 ## sonarQube usage
 
 * configuration file:
 
-` 
+```
+
 # required metadata
 sonar.projectKey=cpp:HelloWorld
 sonar.projectName=Hello World ! 
@@ -71,7 +69,9 @@ sonar.cxx.include_directories=.
 sonar.cxx.cppcheck.reportPath=cppcheck-report.xml
 sonar.cxx.vera.reportPath=vera++-report.xml
 sonar.cxx.valgrind.reportPath=valgrind-report.xml
-sonar.cxx.coverage.reportPath=gcovr-report*.xmll` 
+sonar.cxx.coverage.reportPath=gcovr-report*.xmll
+
+```
 
 Run sonarQube :
 
